@@ -1,0 +1,21 @@
+# Data bestanden (te groot voor GitHub)
+data/raw/
+data/processed/*.csv
+data/processed/*.xlsx
+
+# Python
+__pycache__/
+*.py[cod]
+.env
+venv/
+.venv/
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Power BI
+*.pbix
+
+# OS
+.DS_Store
+Thumbs.db
