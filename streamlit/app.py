@@ -230,8 +230,10 @@ with col_a:
     st.markdown("<div style='color:#c0c8e0;font-weight:600;margin-bottom:0.5rem'>Ongevallen per jaar</div>", unsafe_allow_html=True)
     per_jaar = gefilterd['jaar'].value_counts().sort_index()
     fig, ax = dark_fig()
-    breedte = min(0.6, 0.8 / max(len(per_jaar), 1))
-    bars = ax.bar(per_jaar.index, per_jaar.values, color=BLUE, width=breedte)
+    x_pos = range(len(per_jaar))
+    bars = ax.bar(x_pos, per_jaar.values, color=BLUE, width=0.5)
+    ax.set_xticks(x_pos)
+    ax.set_xticklabels(per_jaar.index)
     ax.bar_label(bars, fmt=lambda x: f'{int(x):,}', color=TEXT_COL, fontsize=8, padding=3)
     ax.yaxis.set_major_formatter(mticker.FuncFormatter(lambda x, _: f'{int(x):,}'))
     ax.spines['top'].set_visible(False)
@@ -263,6 +265,8 @@ with col_c:
         per_ernst.values,
         labels=None,
         autopct='%1.1f%%',
+        pctdistance=0.75,
+        textprops={'fontsize': 7},
         colors=kleuren[:len(per_ernst)],
         startangle=90,
         wedgeprops=dict(width=0.6)
