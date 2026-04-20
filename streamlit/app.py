@@ -71,6 +71,9 @@ def load_data():
     df = pd.read_parquet(DATA_PATH)
     df = df[(df['x'] > 20000) & (df['x'] < 300000) &
             (df['y'] > 20000) & (df['y'] < 270000)]
+    # DT_TIME is het uur rechtstreeks (0-23)
+    df['hour'] = pd.to_numeric(df['DT_TIME'], errors='coerce')
+
     transformer = Transformer.from_crs("EPSG:31370", "EPSG:4326", always_xy=True)
     coords = df[['x', 'y']].dropna()
     lon, lat = transformer.transform(coords['x'].values, coords['y'].values)
