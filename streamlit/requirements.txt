@@ -1,0 +1,8 @@
+pandas
+folium
+streamlit-folium
+pyproj
+matplotlib
+sqlalchemy
+psycopg2-binary
+openpyxl
