@@ -231,7 +231,7 @@ with col_a:
     per_jaar = gefilterd['jaar'].value_counts().sort_index()
     fig, ax = dark_fig()
     x_pos = range(len(per_jaar))
-    bars = ax.bar(x_pos, per_jaar.values, color=BLUE, width=0.5)
+    bars = ax.bar(x_pos, per_jaar.values, color=BLUE, width=0.5, edgecolor='none')
     ax.set_xticks(x_pos)
     ax.set_xticklabels(per_jaar.index)
     ax.bar_label(bars, fmt=lambda x: f'{int(x):,}', color=TEXT_COL, fontsize=8, padding=3)
@@ -264,7 +264,7 @@ with col_c:
     wedges, texts, autotexts = ax.pie(
         per_ernst.values,
         labels=None,
-        autopct='%1.1f%%',
+        autopct=lambda p: f'{p:.1f}%' if p > 5 else '',
         pctdistance=0.75,
         textprops={'fontsize': 7},
         colors=kleuren[:len(per_ernst)],
