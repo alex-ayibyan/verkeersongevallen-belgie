@@ -261,7 +261,7 @@ with col_c:
     per_ernst = gefilterd['ernst'].value_counts()
     fig, ax = dark_fig()
     kleuren = ['#4f8ef7', '#f5a623', '#e05c5c', '#c0392b']
-    wedges, texts, autotexts = ax.pie(
+    wedges, texts = ax.pie(
         per_ernst.values,
         labels=None,
         autopct=None,
