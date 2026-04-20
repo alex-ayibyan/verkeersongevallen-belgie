@@ -247,7 +247,7 @@ with col_b:
     per_prov.index = per_prov.index.str.replace('Provincie ', '', regex=False)
     fig, ax = dark_fig()
     colors = [RED if i == 0 else BLUE for i in range(len(per_prov))]
-    per_prov.sort_values().plot(kind='barh', ax=ax, color=colors[::-1])
+    per_prov.sort_values().plot(kind='barh', ax=ax, color=colors[::-1], edgecolor='none')
     ax.xaxis.set_major_formatter(mticker.FuncFormatter(lambda x, _: f'{int(x):,}'))
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
@@ -264,16 +264,15 @@ with col_c:
     wedges, texts, autotexts = ax.pie(
         per_ernst.values,
         labels=None,
-        autopct=lambda p: f'{p:.1f}%' if p > 5 else '',
-        pctdistance=0.75,
-        textprops={'fontsize': 7},
+        autopct=None,
         colors=kleuren[:len(per_ernst)],
         startangle=90,
         wedgeprops=dict(width=0.6)
     )
-    for t in autotexts: t.set_color('white')
-    ax.legend(wedges, per_ernst.index, loc='lower center',
-              bbox_to_anchor=(0.5, -0.15), ncol=2,
+    totaal = per_ernst.values.sum()
+    labels_pct = [f"{lbl}  {v/totaal*100:.1f}%" for lbl, v in zip(per_ernst.index, per_ernst.values)]
+    ax.legend(wedges, labels_pct, loc='lower center',
+              bbox_to_anchor=(0.5, -0.2), ncol=1,
               fontsize=8, frameon=False,
               labelcolor=TEXT_COL)
     plt.tight_layout()
