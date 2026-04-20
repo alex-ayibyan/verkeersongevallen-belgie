@@ -2,6 +2,9 @@
 data/raw/
 data/processed/*.csv
 data/processed/*.xlsx
+data/processed/*.parquet
+# Uitzondering: cleaned parquet mag wel
+!data/processed/ongevallen_cleaned.parquet
 
 # Python
 __pycache__/

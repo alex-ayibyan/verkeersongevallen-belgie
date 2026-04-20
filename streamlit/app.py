@@ -1,3 +1,4 @@
+from pathlib import Path
 import streamlit as st
 import pandas as pd
 import folium
@@ -15,9 +16,11 @@ st.set_page_config(
 
 # ── Data laden ────────────────────────────────────────────────────────────────
 
+DATA_PATH = Path(__file__).parent.parent / "data" / "processed" / "ongevallen_cleaned.parquet"
+
 @st.cache_data
 def load_data():
-    df = pd.read_csv("../data/processed/ongevallen_cleaned.csv", low_memory=False)
+    df = pd.read_parquet(DATA_PATH)
 
     # Slechte coördinaten filteren (Belgisch Lambert 72 bereik)
     df = df[(df['x'] > 20000) & (df['x'] < 300000) &
