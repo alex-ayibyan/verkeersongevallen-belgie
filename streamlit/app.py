@@ -221,6 +221,7 @@ def dark_fig(figsize=(6, 4)):
     ax.title.set_color(TEXT_COL)
     for spine in ax.spines.values():
         spine.set_edgecolor(GRID_COL)
+    ax.set_axisbelow(True)
     ax.grid(color=GRID_COL, linewidth=0.5)
     return fig, ax
 
