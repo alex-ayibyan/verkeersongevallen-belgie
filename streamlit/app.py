@@ -261,14 +261,17 @@ with col_c:
     kleuren = ['#4f8ef7', '#f5a623', '#e05c5c', '#c0392b']
     wedges, texts, autotexts = ax.pie(
         per_ernst.values,
-        labels=per_ernst.index,
+        labels=None,
         autopct='%1.1f%%',
         colors=kleuren[:len(per_ernst)],
         startangle=90,
         wedgeprops=dict(width=0.6)
     )
-    for t in texts: t.set_color(TEXT_COL)
     for t in autotexts: t.set_color('white')
+    ax.legend(wedges, per_ernst.index, loc='lower center',
+              bbox_to_anchor=(0.5, -0.15), ncol=2,
+              fontsize=8, frameon=False,
+              labelcolor=TEXT_COL)
     plt.tight_layout()
     st.pyplot(fig)
 
