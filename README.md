@@ -3,9 +3,10 @@
 End-to-end data project op basis van officiële Statbel-data over verkeersongevallen in België.
 
 ## Stack
-- **Python** (Pandas, Matplotlib, Seaborn) — data cleaning & exploratory analysis
-- **PostgreSQL** — data opslag en SQL analyse
-- **Power BI** — interactief dashboard
+- **Python** (Pandas, Matplotlib, Seaborn) - data cleaning & exploratory analysis
+- **PostgreSQL** - data opslag en SQL analyse
+- **Power BI** - interactief dashboard
+- **Streamlit** - publieke webapplicatie met interactieve kaart en filters op provincie, jaar en wegtype
 
 ## Business vragen
 1. Wanneer gebeuren de meeste ongevallen? (uur, dag, maand)
@@ -22,8 +23,9 @@ data/
 notebooks/      → Jupyter notebooks (EDA)
 sql/            → SQL queries per business vraag
 powerbi/        → Power BI screenshots en exports
+streamlit/      → Streamlit app (app.py)
 ```
 
 ## Data source
 Statbel — Verkeersongevallen
-https://statbel.fgov.be/nl/themas/mobiliteit/verkeer-en-vervoer/verkeersongevallen
+https://statbel.fgov.be/nl/open-data/geolocalisatie-van-de-verkeersongevallen-2017-2024
